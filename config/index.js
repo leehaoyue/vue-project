@@ -11,15 +11,24 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/crossDomain': {
-            target: 'http：//127.0.0.1:8081', // 跨域调用的接口
-            secure: true, // 是否https(是：false；否：true)
-            changeOrigin: true, // 是否跨域(是：true；否：false)
+        '/listAsearch': {
+            target: 'http://tingapi.ting.baidu.com',
+            secure: true,
+            changeOrigin: true,
             pathRewrite: {
-              '^/crossDomain': '' // 如调用'http：//127.0.0.1/user/add'，可直接写/crossDomain/user/add
+              '^/listAsearch': ''
+            }
+        },
+        '/infomation': {
+            target: 'http://music.baidu.com/data/music/links',
+            secure: true,
+            changeOrigin: true,
+            pathRewrite: {
+              '^/infomation': ''
             }
         }
     },
+
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -28,7 +37,14 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+    // Use Eslint Loader?
+    // If true, your code will be linted during bundling and
+    // linting errors and warnings will be shown in the console.
+    useEslint: true,
+    // If true, eslint errors and warnings will also be shown in the error overlay
+    // in the browser.
+    showEslintErrorsInOverlay: false,
+
     /**
      * Source Maps
      */
@@ -46,10 +62,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../vue-project/index.html'),
+    index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../vue-project'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 

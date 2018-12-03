@@ -1,21 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld/index.vue'
+
+const helloworld = () => import('@/components/helloworld/index.vue')
 
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
-	base: '/vue-project',
   routes: [
     {
-      path: '*',
-      component: HelloWorld
+      path: '',
+      redirect: 'helloworld'
     },
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: resolve => require(['@/components/HelloWorld/index.vue'],resolve)
+      path: '*',
+      name: 'helloworld',
+      component: helloworld
     }
   ]
 })

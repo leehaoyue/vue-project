@@ -10,12 +10,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+
+const env = require('../config/prod.env')
+
 const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
-const env = require('../config/prod.env')
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -32,8 +34,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
-    publicPath: './',
     path: config.build.assetsRoot,
+    publicPath: './',
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
@@ -51,25 +53,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     //   sourceMap: config.build.productionSourceMap,
     //   parallel: true
     // }),
-    new ParallelUglifyPlugin({
-      cacheDir: '.cache/',
-      uglifyJS:{
-        output: {
-          comments: false
-        },
-        compress: {
-          warnings: false
-        }
-      }
-    }),
-    new HappyPack({
-      id: 'happyBabel',
-      loaders: [{
-        loader: 'babel-loader?cacheDirectory=true',
-      }],
-      threadPool: happyThreadPool,
-      verbose: true,
-    }),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
@@ -144,7 +127,28 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    new HappyPack({
+      id: 'happyBabel',
+      loaders: [{
+        loader: 'babel-loader?cacheDirectory=true',
+      }],
+      threadPool: happyThreadPool,
+      verbose: true,
+    }),
+
+    new ParallelUglifyPlugin({
+      cacheDir: '.cache/',
+        uglifyJS:{
+          output: {
+              comments: false
+          },
+          compress: {
+              warnings: false
+          }
+        }
+    })
   ]
 })
 

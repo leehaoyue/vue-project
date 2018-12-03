@@ -1,8 +1,8 @@
+<!-- 侧边栏 -->
 <template>
-  <div id="HelloWorld">
-    <img src="../../../static/img/logo.png">
-    <h1>{{ msg }}</h1>
-  </div>
+<div>
+    helloworld
+</div>
 </template>
-<style src="./index.less" lang="less"></style>
+<style lang="less" src="./index.less"></style>
 <script src="./index.js"></script>

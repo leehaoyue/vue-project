@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <router-view/>
   </div>
 </template>
-<style src="./main.less" lang="less"></style>
+<style lang="less" src="./App.less"></style>
 <script>
 export default {
   name: 'App'
