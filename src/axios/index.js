@@ -22,6 +22,7 @@ const axiosInstance = axios.create({
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 })
+
 // 自定义拦截器
 axiosInstance.interceptors.request.use(res => {
   // 请求成功
