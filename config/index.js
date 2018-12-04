@@ -11,20 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/listAsearch': {
-            target: 'http://tingapi.ting.baidu.com',
+        '/crossDomain': {
+            target: process.env.crossDomain,
             secure: true,
             changeOrigin: true,
             pathRewrite: {
-              '^/listAsearch': ''
-            }
-        },
-        '/infomation': {
-            target: 'http://music.baidu.com/data/music/links',
-            secure: true,
-            changeOrigin: true,
-            pathRewrite: {
-              '^/infomation': ''
+              '^/crossDomain': ''
             }
         }
     },

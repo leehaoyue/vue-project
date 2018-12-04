@@ -2,8 +2,10 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Qs from 'qs'
+import service from './service.js'
 
 Vue.prototype.Qs = Qs
+Vue.prototype.service = service
 
 const axiosInstance = axios.create({
   transformRequest: [data => { // 请求数据处理（防止后端接收不到参数）
@@ -15,6 +17,7 @@ const axiosInstance = axios.create({
     }
     return data
   }],
+  baseURL: process.env.API,
   responseType: 'json',
   timeout: 3000,
   cancelToken: axios.CancelToken.source().token, // 取消请求（防止一个接口请求多次）
