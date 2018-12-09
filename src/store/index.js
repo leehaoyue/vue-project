@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     result: {},
-    params: {}
+    params: {},
+    msgQue: {}
   },
   getters: {
     resultChange: state => {
@@ -17,6 +18,9 @@ const store = new Vuex.Store({
     requst (state, obj) {
       state.result = obj.result
       state.params = obj.params
+    },
+    socketQue (state, obj) {
+      state.msgQue = obj
     }
   }
 })

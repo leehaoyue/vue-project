@@ -1,17 +1,21 @@
 # vue-cli构建项目（vue-project简洁版）
     
->*Powered by：**LeeHaoyue***    
-> 1. 应用技术：webpack、yarn、vue-cli、vuex、axios、less、font-awesome
-> 2. 兼容性：![](https://sfault-image.b0.upaiyun.com/135/366/1353660446-586b059433d7c)
-> 3. node下载地址：[https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-> 4. 修改npm默认配置路径：[https://blog.csdn.net/wkkyo/article/details/52799488](https://blog.csdn.net/wkkyo/article/details/52799488)
-> 5. npm换源：[https://www.jianshu.com/p/0deb70e6f395](https://www.jianshu.com/p/0deb70e6f395)
-> 6. 安装yarn、vue-cli：[https://www.jianshu.com/p/9308e6abbe44](https://www.jianshu.com/p/9308e6abbe44) 
+>*Powered by：LeeHaoyue（1946188354@qq.com）*    
+> 1. 应用技术：  
+> **基础：** webpack、yarn、vue-cli、axios、less、font-awesome  
+> **vue扩展：** 状态管理：vuex；即时通信：vue-socket.io、socket.io-client  
+> **node扩展：** 即时通信：stocket.io；模块通信：child_process；消费kafka：kafka-node  
+> 2. 兼容性：![](https://sfault-image.b0.upaiyun.com/135/366/1353660446-586b059433d7c)  
+> 3. node下载地址：[https://nodejs.org/en/download/](https://nodejs.org/en/download/)  
+> 4. 修改npm默认配置路径：[https://blog.csdn.net/wkkyo/article/details/52799488](https://blog.csdn.net/wkkyo/article/details/52799488)  
+> 5. npm换源：[https://www.jianshu.com/p/0deb70e6f395](https://www.jianshu.com/p/0deb70e6f395)  
+> 6. 安装yarn、vue-cli：[https://www.jianshu.com/p/9308e6abbe44](https://www.jianshu.com/p/9308e6abbe44)   
 > 7. vue-cli构建项目：[https://www.jianshu.com/p/2769efeaa10a](https://www.jianshu.com/p/2769efeaa10a)
 
-**注：**
-1. *该框架使用了**vuex（/src/store/）**,非必须。实际开发中须按需引入，避免代码冗余*
-2. *该框架使用了一些**Eslint(js严格模式)**,非必须。实际开发中须按需配置，避免代码要求偏离本质*
+**注：**  
+1. *该框架使用了 **vuex（/src/store/）** 做状态管理，非必须*  
+2. *该框架使用了 **Eslint(.eslintrc.js)** 做js书写校验 ，非必须*  
+3. *该框架使用了 **vue+socket.io+node（/static/node/、/src/socket.io/）**  做即时通信，非必须【因为添加了即时通信模块，所以在未添加node服务配置时，启动后控制台会报错，但不影响使用。配置node服务或删除该模块即可解决】*  
 
 ## 1、建立项目
 
@@ -193,6 +197,8 @@ b.部署：
 c.调用方法：
 	process.env.API(直接调用即可)
 ```	
+8. 即时通信（详情参看：/static/node/、/src/socket.io/、/src/components/HelloWorld/index.js）
+
 ##### webpack打包优化[【相关链接】](https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed/)
 1. 将babel-loader的cacheDirectory置为true
 ```js

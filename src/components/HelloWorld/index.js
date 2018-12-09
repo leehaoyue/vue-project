@@ -6,6 +6,7 @@ export default {
     }
   },
   created() {
+    // http请求
 		this.axios({
 	    method: 'post',
 	    url: '',
@@ -17,5 +18,12 @@ export default {
 	  .catch(err => {
 	    // console.log(err);
 	  })
+  },
+  mounted() {
+    // 即时通信
+    this.$socket.emit('start', {
+      topic: '', // Kafka topic_name
+      method: 'socketQue' // vuex commit_name
+    });
   }
 }

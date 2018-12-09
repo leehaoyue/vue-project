@@ -12,6 +12,9 @@ import store from '@/store/index'
 import promise from 'es6-promise'
 // axios（请求）
 import '@/axios/index'
+// socket.io（即时通信）
+import '@/socket.io/index'
+import sockets from '@/socket.io/connect.js'
 
 promise.polyfill()
 
@@ -25,6 +28,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  sockets,
   components: { App },
   template: '<App/>'
 })
