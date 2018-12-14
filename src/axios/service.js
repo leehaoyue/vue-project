@@ -4,9 +4,9 @@ import store from '@/store/index'
 export default {
   getRes (params) {
     Vue.axios({
-      method: 'get',
-      url: '',
-      params: params
+      method: params.method,
+      url: params.url,
+      params: params.params
     }).then((res) => {
       store.commit('requst', res)
     })

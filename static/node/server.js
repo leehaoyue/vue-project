@@ -7,18 +7,26 @@ const cp = require('child_process');
 const kafka = cp.fork('./toKafka.js');
 
 io.sockets.on('connection', (socket) => {
-  console.log('vue链接成功');
+  console.log('socket-连接')
   socket.on('start', (req) => { //监听前端发送的start
+    let temp = new Date().getTime();
     kafka.send({
       topic: req.topic,
-      url: '' // zookeeper的ip+端口
+      url: '', // zookeeper的ip+端口,
+      temp: temp
     });
     kafka.on('message', (res) => {
-      console.log('kafka消费')
-      socket.emit('login', {
-        ...res,
-        method: req.method
-      }); //触发emit,前端接收
+      console.log('kafka-消费')
+      if (temp === res.temp) {
+        io.to(socket.id).emit('login', {
+          ...res,
+          method: req.method
+        }); //触发emit,前端接收
+      }
     })
   });
+  socket.on('disconnect', () => {
+    console.log('socket-断开')
+    socket.disconnect();
+  })
 });

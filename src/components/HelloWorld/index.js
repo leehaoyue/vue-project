@@ -18,12 +18,34 @@ export default {
 	  .catch(err => {
 	    // console.log(err);
 	  })
+    // 全局请求
+    this.service.getRes({
+      method: '',
+      url: '',
+      data: ''
+    })
   },
   mounted() {
     // 即时通信
-    this.$socket.emit('start', {
-      topic: '', // Kafka topic_name
-      method: 'socketQue' // vuex commit_name
-    });
+    this.getSocket()
+  },
+  methods: {
+    // 即时通信
+    getSocket() {
+      this.$socket.disconnect()
+      this.$socket.connect(process.env.socketAPI)
+      this.$socket.emit('start', {
+        topic: '', // Kafka topic_name
+        method: '' // vuex commit_name
+      });
+      this.$socket.on('connect_error', (error) => {
+        let r = confirm('连接失败，请重试');
+        if (r === true) {
+          this.getSocket()
+        } else {
+          this.$socket.disconnect()
+        }
+      });
+    }
   }
 }

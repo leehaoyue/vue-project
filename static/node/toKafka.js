@@ -7,16 +7,17 @@ let topics = [{
   offset: 0
 }];
 let options = {
-  groupId: new Date().getTime().toString(),
-  autoCommit: true,
+  groupId: 'kafka-node-group',
+  autoCommit: false,
   autoCommitMsgCount: 100,
   autoCommitIntervalMs: 1000,
-  autoOffsetReset: 'earliest',
+  autoOffsetReset: 'latest',
   fetchMaxWaitMs: 100,
   fetchMinBytes: 1,
   fetchMaxBytes: 1024 * 1024,
-  fromOffset: true,
+  fromOffset: false,
   fromBeginning: true,
+  maxPollRecords: 1,
   encoding: 'utf8'
 };
 
@@ -30,17 +31,19 @@ process.on('message', (params) => {
   let consumer = new Consumer(client, topics, options);
   console.log('kafka链接成功');
   consumer.on('message', (message) => {
-    if(message.highWaterOffset - 1 === message.offset) {
+    // if(message.highWaterOffset - 1 === message.offset) {
       process.send({
         status: true,
-        data: message
+        data: message,
+        temp: params.temp
       })
-    }
+    // }
   });
   consumer.on('error', (message) => {
     process.send({
       status: false,
-      data: message
+      data: message,
+      temp: params.temp
     })
   });
   consumer.on('offsetOutOfRange', (topic) => {

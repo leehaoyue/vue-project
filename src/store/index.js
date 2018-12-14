@@ -16,8 +16,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     requst (state, obj) {
-      state.result = obj.result
-      state.params = obj.params
+      state.result = obj
     },
     socketQue (state, obj) {
       state.msgQue = obj
