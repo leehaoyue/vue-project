@@ -3,12 +3,17 @@ import store from '@/store/index'
 
 export default {
   getRes (params) {
-    Vue.axios({
-      method: params.method,
-      url: params.url,
-      params: params.params
-    }).then((res) => {
-      store.commit('requst', res)
-    })
+    return new Promise((resolve, reject) => {
+      Vue.axios({
+        method: params.method,
+        url: params.url,
+        params: params.params
+      }).then((res) => {
+        resolve(res);
+        store.commit('requst', res)
+      }).catch((err) => {
+        reject(err);
+      })
+    });
   }
 }

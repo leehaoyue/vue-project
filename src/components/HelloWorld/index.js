@@ -23,6 +23,8 @@ export default {
       method: '',
       url: '',
       data: ''
+    }).then(res => {
+      // console.log(res)
     })
   },
   mounted() {
