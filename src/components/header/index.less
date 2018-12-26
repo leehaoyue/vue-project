@@ -1,0 +1,39 @@
+@import '../../global/globalStyle.less';
+
+.el-header {
+  background: #fff;
+  color: @grayScale-color_3;
+  .header {
+    line-height: 60px;
+    .head_l {
+      .fa {
+        cursor: pointer;
+      }
+    }
+    .head_r {
+      text-align: right;
+      .el-input {
+        width: auto;
+        .el-input__inner {
+          border: none;
+          border-radius: 0;
+          border-bottom: 1px solid #dcdfe6;
+        }
+      }
+      .el-badge {
+        line-height: 1;
+      }
+      .fa {
+        font-weight: 100;
+        margin-left: 1rem;
+      }
+      .el-dropdown {
+        color: @grayScale-color_3;
+        img {
+          width: 10%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

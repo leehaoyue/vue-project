@@ -1,0 +1,23 @@
+@import '../../../global/globalStyle.less';
+
+.defaultStyle {
+  color: @grayScale-color_5;
+}
+
+.activeStyle {
+  color: #fff; 
+  background-color: @primary-color !important;
+}
+
+.asiderItem {
+  .defaultStyle;
+  .el-submenu__title, .el-menu-item, .fa {
+    .defaultStyle;
+    &.el-menu-item.is-active {
+      .activeStyle;
+    }
+  }
+  &.is-active {
+    .activeStyle;
+  }
+}
