@@ -10,8 +10,8 @@ export default {
         label: 'label'
       },
       idObj: {},
-      defaultActive: 2, // 默认激活菜单的
-      defaultOpeneds: [1], // 默认选中节点
+      defaultActive: 1, // 默认激活菜单的
+      defaultOpeneds: [0], // 默认选中节点
       asiderList: asiderList
     }
   },

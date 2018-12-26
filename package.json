@@ -1,7 +1,7 @@
 {
-  "name": "das_mon",
+  "name": "background_system",
   "version": "1.0.0",
-  "description": "上海地铁数采监控系统",
+  "description": "数据可视化/CMS管理系统",
   "author": "LeeHaoyue",
   "private": true,
   "scripts": {

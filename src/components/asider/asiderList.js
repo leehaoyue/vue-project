@@ -1,55 +1,54 @@
 export default [{
-  id: 1,
-  label: '状态监视',
+  id: 0,
+  label: '基础组件',
   symbal: 'fa fa-tachometer',
   children: [{
+    id: 1,
+    label: '表格'
+  }, {
     id: 2,
-    label: '数据分析'
+    label: '卡片'
   }, {
     id: 3,
-    label: '综合监视'
+    label: '动态表单'
   }]
 }, {
   id: 4,
-  label: '数据浏览',
-  symbal: 'fa fa-th-large',
+  label: 'ECharts组件',
+  symbal: 'fa fa-line-chart',
   children: [{
     id: 5,
-    label: '客流',
+    label: '单一模型',
     children: [{
       id: 6,
-      label: '进出站量'
+      label: '折线图'
     }, {
       id: 7,
-      label: 'OD'
-    }]
-  }, {
-    id: 8,
-    label: '行车',
-    children: [{
+      label: '柱状图'
+    }, {
+      id: 8,
+      label: '饼图'
+    }, {
       id: 9,
-      label: '10号线'
+      label: '雷达图'
     }, {
       id: 10,
-      label: '17号线'
+      label: '关系图'
     }]
   }, {
     id: 11,
-    label: '设备',
-    children: [{
-      id: 12,
-      label: '10号线'
-    }, {
-      id: 13,
-      label: '17号线'
-    }]
+    label: '多个模型'
   }]
 }, {
   id: 14,
-  label: '接口管理',
-  symbal: 'fa fa-cog',
+  label: '百度地图组件',
+  symbal: 'fa fa-map-o',
   children: [{
     id: 15,
-    label: '接口状态'
+    label: '地铁图'
   }]
+}, {
+  id: 16,
+  label: '404/建设中组件',
+  symbal: 'fa fa-cog'
 }]

@@ -2,7 +2,7 @@ export default {
   name: 'subway',
   data() {
     return {
-      cityName: '上海'
+      cityName: '北京'
     }
   },
   mounted() {

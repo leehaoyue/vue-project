@@ -4,7 +4,7 @@
     <el-col :span="24">
       <div class="logo">
         <img src="../../../static/img/logoico.png">
-        <span v-if="!$store.state.asideDent">数据采集平台</span>
+        <span v-if="!$store.state.asideDent">管理平台</span>
       </div>
       <el-menu class="asiderMenu"
         background-color="#002140"

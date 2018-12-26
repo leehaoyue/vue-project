@@ -1,25 +1,28 @@
-# das_mon
+# 数据可视化/CMS管理系统
 
-> 上海地铁数采监控系统  
->> **基础技术栈：** vue脚手架：vue-cli；http请求：axios；CSS预处理：less；图标字体库：font-awesome  
->> **UI框架：** Element-UI  
->> **数据可视化：** ECharts  
->> **资源管理：** yarn  
->> **模块打包器：** webpack  
->> **vue依赖：** 状态管理：vuex；即时通信：vue-socket.io、socket.io-client  
->> **node依赖：** 即时通信：stocket.io；模块通信：child_process；kafka消费：kafka-node  
+> **基础技术栈：** vue脚手架：vue-cli；http请求：axios；CSS预处理：less；图标字体库：font-awesome  
+> **UI框架：** Element-UI  
+> **随机数据：** Mock.js  
+> **动态表单：** form-create  
+> **数据可视化：** ECharts  
+> **资源管理：** yarn  
+> **模块打包器：** webpack  
+> **vue依赖：** 状态管理：vuex；即时通信：vue-socket.io、socket.io-client  
+> **node依赖：** 即时通信：stocket.io；模块通信：child_process；kafka消费：kafka-node  
+
+*注：该项目依赖于master主分支构建*
 
 ## Build Setup
 
 ``` bash
 # 安装依赖
-npm install
+yarn install
 
 # 启动项目（热更新）
-npm run dev
+yarn start
 
 # 打包项目
-npm run build
+yarn run build
 ```
 ## 项目目录
 
