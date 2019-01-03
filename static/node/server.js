@@ -13,7 +13,7 @@ io.sockets.on('connection', (socket) => {
     let temp = new Date().getTime();
     kafka.send({
       topic: req.topic,
-      url: '132.232.172.50:2181',
+      url: '', // zookeeper地址
       temp: temp
     });
     kafka.on('message', (res) => {

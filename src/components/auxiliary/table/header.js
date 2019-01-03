@@ -1,15 +1,15 @@
 export default {
-  EQP: [{
-    prop: 'NAME',
-    label: '名称',
+  tableList: [{
+    prop: 'name',
+    label: '姓名',
     width: ''
   }, {
-    prop: 'VALUE',
-    label: '值',
+    prop: 'grade',
+    label: '分数',
     width: ''
   }, {
-    prop: 'TS',
-    label: '线路',
+    prop: 'code',
+    label: '编码',
     width: ''
   }]
 }

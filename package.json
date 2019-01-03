@@ -21,6 +21,7 @@
     "happypack": "^5.0.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "mockjs": "^1.0.1-beta3",
     "socket.io-client": "^2.2.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",

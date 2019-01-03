@@ -4,7 +4,7 @@ export default [{
     title: '表格', // 模型标题
     interface: 'tableList', // 接口名
     isEcharts: false, // 是否为ECharts
-    realTime: true // 是否为即时通讯
+    realTime: false // 是否为即时通讯
   }]
 }, {
   model: [{
