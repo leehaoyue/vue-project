@@ -1,3 +1,6 @@
 export default {
-  name: 'card'
+  name: 'card',
+  props: {
+    modelData: {}
+  }
 }

@@ -18,7 +18,7 @@ export default {
   created() {
     this.asiderListFC(asiderList)
     this.$store.commit('idObj', this.idObj)
-    this.$store.commit('selectFC', 2)
+    this.$store.commit('selectFC', 1)
   },
   methods: {
     // 侧边栏选中选项

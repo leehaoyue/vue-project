@@ -22,11 +22,9 @@ import '@/axios/index'
 import '@/socket.io/index'
 import sockets from '@/socket.io/connect.js'
 // 引入Mock.js
-import mock from '@/mock/index.js'
+import '@/mock/index.js'
 // Echarts（数据可视化）
 import echarts from 'echarts'
-
-Vue.prototype.$mock = mock
 Vue.prototype.$echarts = echarts
 // promise兼容性处理（ie、火狐）
 promise.polyfill()

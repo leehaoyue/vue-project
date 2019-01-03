@@ -4,7 +4,8 @@ export default [{
     title: '表格', // 模型标题
     interface: 'tableList', // 接口名
     isEcharts: false, // 是否为ECharts
-    realTime: false // 是否为即时通讯
+    realTime: false, // 是否为即时通讯
+    isMock: true // 是否使用Mock数据
   }]
 }, {
   model: [{
@@ -12,7 +13,8 @@ export default [{
     title: '卡片',
     interface: 'card',
     isEcharts: false,
-    realTime: true
+    realTime: false,
+    isMock: true
   }]
 }, {
   model: [{

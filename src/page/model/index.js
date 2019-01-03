@@ -36,9 +36,9 @@ export default {
       this.loadingMask(true, false);
       if (model.interface) {
         if (model.realTime) {
-          this.getSocket(model.interface)
+          this.getSocket(model)
         } else {
-          this.getAxios(model.interface)
+          this.getAxios(model)
         }
       } else if(model.isBuilding) {
         this.setModel();
@@ -49,12 +49,17 @@ export default {
     },
     // HTTP请求
     getAxios(param) {
-      this.$service.getModel('param.url', 'param.method', 'param.params').then((res) => {
+      this.$service.getModel(param.url, param.method, param.params).then((res) => {
         this.setModel(res.data.name, res.data.data);
         this.loadingMask(false, false);
       }).catch(() => {
-        this.confirmMask(param, 'getAxios');
-        this.loadingMask(false, true);
+        if (param.isMock) {
+          this.setModel(param.interface, this.$mock()[param.interface]);
+          this.loadingMask(false, false);
+        } else {
+          this.confirmMask(param, 'getAxios');
+          this.loadingMask(false, true);
+        }
       })
     },
     // 即时通讯
@@ -62,8 +67,8 @@ export default {
       this.$socket.disconnect()
       this.$socket.connect(process.env.socketAPI)
       this.$socket.emit('start', {
-        topic: param,
-        name: param,
+        topic: param.topic,
+        name: param.name,
         method: 'setData'
       });
       this.$socket.on('connect_error', (error) => {

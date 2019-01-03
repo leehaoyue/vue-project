@@ -1,11 +1,22 @@
 export default {
-  EQP: (data) => {
+  tableList: (data) => {
     if (data.status) {
       return {
         status: data.status,
-        header: data.data.name,
-        // body: JSON.parse(data.data.value)
-        body: data.data.value.value
+        header: data.header,
+        body: data.body
+      }
+    }
+    return {
+      ...data,
+      status: false
+    }
+  },
+  card: (data) => {
+    if (data.status) {
+      return {
+        status: data.status,
+        data: data.data
       }
     }
     return {
