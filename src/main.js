@@ -15,6 +15,10 @@ import '@/axios/index'
 // socket.io（即时通信）
 import '@/socket.io/index'
 import sockets from '@/socket.io/connect.js'
+// mint-ui
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(Mint)
 
 promise.polyfill()
 
