@@ -24,6 +24,7 @@ yarn start
 # 打包项目
 yarn run build
 ```
+
 ## 项目目录
 
 | 目录名 | 文件路径 | 目录名 | 文件路径 | 目录名 | 文件路径 |
@@ -33,3 +34,4 @@ yarn run build
 | HTTP请求 | /src/axios | 即时通信 | /src/socket.io | 状态管理 | /src/store |
 | 组件模板 | /src/components | 导航栏 | /src/components/header | 侧边栏 | /src/components/asider |
 | 自定义组件 | /src/components/auxiliary | ECharts模型 | /src/components/echarts | 路由配置 | /src/router |
+| Node服务 | /static/node | Mock模型 | /src/mock | ··· | ··· | 
