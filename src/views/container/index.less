@@ -1,0 +1,46 @@
+@import '../../global/globalStyle.less';
+
+.container {
+  height: 100vh;
+  position: relative;
+  .refresh {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+    transform: scale(0.5);
+  }
+  .page-outer, .page-inner {
+    height: 100%;
+    overflow: hidden;
+  }
+  .el-aside {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s;
+    .asideouter {
+      height: calc(100% - 50px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .collapsebtn {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border: none;
+      height: 50px;
+      border-radius: 0;
+      background: @primary-color;
+    }
+  }
+  .el-header {
+    padding: 0 10px;
+  }
+  .el-main {
+    padding: 10px;
+    height: calc(100% - @header);
+    overflow: auto;
+  }
+}
