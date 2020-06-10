@@ -29,17 +29,27 @@ const $instance = axios.create({
 $instance.interceptors.request.use(res => {
   // 请求成功
   return res;
-}, () => {
+}, err => {
   // 请求失败
-  Message.warning('请求失败，请重试！');
+  Message({
+    type: 'warning',
+    showClose: true,
+    message: '请求失败，请重试！'
+  });
+  return Promise.reject(err);
 });
 
 $instance.interceptors.response.use(res => {
   // 响应成功
   return res;
-}, () => {
+}, err => {
   // 响应失败
-  Message.error('响应失败，请重试！');
+  Message({
+    type: 'error',
+    showClose: true,
+    message: '响应失败，请重试！'
+  });
+  return Promise.reject(err);
 });
 
 export default {
@@ -89,6 +99,7 @@ export default {
           }).catch(() => {
             MessageBox({
               type: 'info',
+              showClose: true,
               message: '已取消！'
             });
           });
@@ -106,7 +117,11 @@ export default {
             this.getData({url, method, params, baseURL, responseType, headers});
           }
         }).catch(() => {
-          Message.info('已取消！');
+          Message({
+            type: 'info',
+            showClose: true,
+            message: '已取消！'
+          });
         });
         reject(err);
       });
@@ -166,8 +181,9 @@ export default {
               this.uploadFile({url, method, params, baseURL});
             }
           }).catch(() => {
-            MessageBox({
+            Message({
               type: 'info',
+              showClose: true,
               message: '已取消！'
             });
           });
@@ -185,6 +201,11 @@ export default {
             this.uploadFile({url, method, params, baseURL});
           }
         }).catch(() => {
+          Message({
+            type: 'info',
+            showClose: true,
+            message: '已取消！'
+          });
           Message.info('已取消！');
         });
         reject(err);

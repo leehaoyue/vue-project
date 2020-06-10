@@ -14,8 +14,16 @@ export default {
   methods: {
     // 退出
     excit() {
-      this.$store.commit(this.limit, {});
-      this.$router.replace('/refresh');
+      this.$confirm('确认退出登录？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$store.commit(this.limit, {});
+        this.$router.push({ name: 'login' });
+      }).catch(() => {
+        return;
+      });
     }
   }
 };

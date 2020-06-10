@@ -3,7 +3,7 @@ export default {
   methods: {
     login(info) {
       this.$store.commit(info.limit, info.data);
-      this.$router.replace('/refresh');
+      this.$router.push({ name: 'container' });
     }
   }
 };
