@@ -63,7 +63,7 @@ export default {
         };
 
         resolve(res);
-        Loading.service({customClass: 'pageLoading', background: 'transparent'}).close();
+        loading.close();
         return;
       }
       let methods = method || 'post',
