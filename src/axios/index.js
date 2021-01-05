@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Qs from 'qs';
+// import Qs from 'qs';
 import $server from './interfaceList.js';
 import { Message, MessageBox, Loading } from 'element-ui';
 
@@ -8,7 +8,8 @@ const $instance = axios.create({
     if (Object.prototype.toString.call(data) === '[object FormData]') {
       return data;
     }
-    return Qs.stringify(data);
+    return JSON.stringify(data);
+    // return Qs.stringify(data);
   }],
   transformResponse: [data => { // ie兼容性（解决无返回数据问题）
     if (Boolean(window.ActiveXObject) || 'ActiveXObject' in window || navigator.userAgent.indexOf('MSIE') >= 0) {
@@ -26,11 +27,12 @@ const $instance = axios.create({
 });
 
 // 自定义拦截器
-$instance.interceptors.request.use(res => {
+$instance.interceptors.request.use(conf => {
   // 请求成功
-  return res;
+  return conf;
 }, err => {
   // 请求失败
+  Message.closeAll();
   Message({
     type: 'warning',
     showClose: true,
@@ -44,6 +46,7 @@ $instance.interceptors.response.use(res => {
   return res;
 }, err => {
   // 响应失败
+  Message.closeAll();
   Message({
     type: 'error',
     showClose: true,
@@ -83,12 +86,12 @@ export default {
         url: url
       }).then(res => {
         loading.close();
-        if (res.data && res.data.status===200) {
+        if (res.data && (res.data.load>0 || res.data.status===200 || res.data.status===201)) {
           resolve(res);
         } else {
           MessageBox({
             title: '提示',
-            message: res.data.message,
+            message: res.data.message || '请求响应失败，请重试！',
             showCancelButton: true,
             showConfirmButton: true,
             type: 'warning'
@@ -97,7 +100,8 @@ export default {
               this.getData({url, method, params, baseURL, responseType, headers});
             }
           }).catch(() => {
-            MessageBox({
+            Message.closeAll();
+            Message({
               type: 'info',
               showClose: true,
               message: '已取消！'
@@ -108,7 +112,7 @@ export default {
         loading.close();
         MessageBox({
           title: '提示',
-          message: `接口【${url}】错误，请重试！'`,
+          message: err || '请求响应失败，请重试！',
           showCancelButton: true,
           showConfirmButton: true,
           type: 'warning'
@@ -117,6 +121,7 @@ export default {
             this.getData({url, method, params, baseURL, responseType, headers});
           }
         }).catch(() => {
+          Message.closeAll();
           Message({
             type: 'info',
             showClose: true,
@@ -144,7 +149,7 @@ export default {
         }
       }
       for (let i in paramsObj) {
-        if (Array.isArray(paramsObj[i])) {
+        if (Array.isArray(paramsObj[i]) && paramsObj[i][0] instanceof File) {
           for (let j in paramsObj[i]) {
             formData.append(i, paramsObj[i][j], new Date().getTime());
           }
@@ -157,7 +162,6 @@ export default {
       } : {
         params: formData
       };
-
       $instance({...obj,
         url: url,
         baseURL: baseURL || process.env.VUE_APP_API,
@@ -167,12 +171,12 @@ export default {
         }
       }).then(res => {
         loading.close();
-        if (res.data && res.data.status===200) {
+        if (res.data && (res.data.load>0 || res.data.status===200 || res.data.status===201)) {
           resolve(res);
         } else {
           MessageBox({
             title: '提示',
-            message: `接口【${url}】错误，请重试！'`,
+            message: res.data.message || '请求响应失败，请重试！',
             showCancelButton: true,
             showConfirmButton: true,
             type: 'warning'
@@ -181,6 +185,7 @@ export default {
               this.uploadFile({url, method, params, baseURL});
             }
           }).catch(() => {
+            Message.closeAll();
             Message({
               type: 'info',
               showClose: true,
@@ -192,7 +197,7 @@ export default {
         loading.close();
         MessageBox({
           title: '提示',
-          message: `接口【${url}】错误，请重试！'`,
+          message: err || '请求响应失败，请重试！',
           showCancelButton: true,
           showConfirmButton: true,
           type: 'warning'
@@ -201,12 +206,12 @@ export default {
             this.uploadFile({url, method, params, baseURL});
           }
         }).catch(() => {
+          Message.closeAll();
           Message({
             type: 'info',
             showClose: true,
             message: '已取消！'
           });
-          Message.info('已取消！');
         });
         reject(err);
       });

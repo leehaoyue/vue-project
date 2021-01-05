@@ -15,7 +15,7 @@ import echarts from 'echarts';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
-// form-create
+// form-create-表单生成器
 import formCreate, { maker } from '@form-create/element-ui';
 // font-awesome-矢量图标
 import 'font-awesome/css/font-awesome.css';
