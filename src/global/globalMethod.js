@@ -1,4 +1,18 @@
 export default {
+  // 判断android、ios
+  iSAndroid() {
+    let u = navigator.userAgent,
+      isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+      isIOS = Boolean(u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/));
+
+    if (isAndroid) {
+      return 'android';
+    }
+    if (isIOS) {
+      return 'ios';
+    }
+    return 'pc';
+  },
   // url截取参数
   getURLString(key) {
     let reg = new RegExp('(^|&)'+ key +'=([^&]*)(&|$)'),

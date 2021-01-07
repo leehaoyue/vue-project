@@ -12,6 +12,21 @@ module.exports = {
   lintOnSave: true,
   runtimeCompiler: false,
   productionSourceMap: false,
+  pages: {
+    index: 'src/pages/main.js',
+    mobile: {
+      entry: 'src/pages/mobile/main.js',
+      template: 'public/mobile.html',
+      filename: 'mobile.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'mobile']
+    },
+    pc: {
+      entry: 'src/pages/pc/main.js',
+      template: 'public/pc.html',
+      filename: 'pc.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'pc']
+    }
+  },
   devServer: {
     overlay: {
       warnings: true,

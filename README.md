@@ -1,15 +1,16 @@
-# vue-cli3 搭建的空项目
+# vue-cli3 搭建的空项目（多页面：pc、mobile）
 
 ## 技术栈
 
 1.	vue-cli
 2.	element-ui
-3.	axios
-4.	mockjs
-5.	echarts
-6.	form-create
-7.	video.js
-8.	svg-sprite-loader
+3.	vant-ui
+4.	axios
+5.	mockjs
+6.	echarts
+7.	form-create
+8.	video.js
+9.	svg-sprite-loader
 。。。
 
 **具体版本等信息参见——*package.json***
