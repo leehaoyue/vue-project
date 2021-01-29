@@ -22,6 +22,7 @@
     "mockjs": "^1.1.0",
     "mux.js": "^5.5.3",
     "svg-sprite-loader": "^4.2.4",
+    "topology-vue": "^0.2.12",
     "video.js": "^7.7.5",
     "videojs-flash": "^2.2.1",
     "vue": "^2.6.11",

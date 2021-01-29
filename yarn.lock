@@ -8094,6 +8094,11 @@ toidentifier@1.0.0:
   resolved "https://registry.npm.taobao.org/toidentifier/download/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha1-fhvjRw8ed5SLxD2Uo8j013UrpVM=
 
+topology-vue@^0.2.12:
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/topology-vue/-/topology-vue-0.2.12.tgz#350fd9e7c58a3f6e10e423b7e7970e2b07dff801"
+  integrity sha512-OEb2RsDL0koXECJvbOH/bQNa0HjURdipSlgMewqngkxt8n0NxB7yUfZ7LmZl6gaM0Pmhbu33lN8JuuLcWG9wwA==
+
 toposort@^1.0.0:
   version "1.0.7"
   resolved "https://registry.npm.taobao.org/toposort/download/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"

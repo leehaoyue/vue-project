@@ -20,6 +20,10 @@ export default {
       index: 'module_C',
       label: '模块-C',
       icon: 'fa fa-check-square-o'
+    }, {
+      index: 'module_D',
+      label: '模块-D',
+      icon: 'fa fa-check-square-o'
     }]
   },
   '/aside_list_usr': {

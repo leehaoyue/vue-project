@@ -35,6 +35,10 @@ const router = new Router({
       path: 'module_C',
       name: 'module_C',
       component: () => import(/* webpackChunkName: "module_C" */ '@/components/module/c/index.vue')
+    }, {
+      path: 'module_D',
+      name: 'module_D',
+      component: () => import(/* webpackChunkName: "module_D" */ '@/components/module/d/index.vue')
     }]
   }]
 });
