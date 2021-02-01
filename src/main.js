@@ -10,7 +10,7 @@ import promise from 'es6-promise';
 // axios-HTTP库
 import axios from '@/axios/index.js';
 // ECharts-数据可视化
-import echarts from 'echarts';
+import * as echarts from 'echarts';
 // Element-桌面端组件库
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

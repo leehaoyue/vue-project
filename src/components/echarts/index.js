@@ -1,5 +1,3 @@
-require('echarts-liquidfill');
-
 export default {
   name: 'echarts',
   props: {
