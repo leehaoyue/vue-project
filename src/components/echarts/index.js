@@ -1,3 +1,5 @@
+import 'echarts-gl';
+
 export default {
   name: 'echarts',
   props: {
