@@ -19,6 +19,7 @@
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.5",
     "lodash": "^4.17.15",
+    "mapv": "^2.0.62",
     "mockjs": "^1.1.0",
     "mux.js": "^5.5.3",
     "svg-sprite-loader": "^4.2.4",
