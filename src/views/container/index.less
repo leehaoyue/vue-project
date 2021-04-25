@@ -2,17 +2,12 @@
 
 .container {
   height: 100vh;
-  position: relative;
-  .refresh {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 2;
-    transform: scale(0.5);
-  }
   .page-outer, .page-inner {
     height: 100%;
     overflow: hidden;
+  }
+  .page-inner {
+    background: @grayScale-color_7;
   }
   .el-aside {
     height: 100%;
@@ -20,27 +15,17 @@
     position: relative;
     transition: all 0.5s;
     .asideouter {
-      height: calc(100% - 50px);
+      height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
     }
-    .collapsebtn {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      border: none;
-      height: 50px;
-      border-radius: 0;
-      background: @primary-color;
-    }
   }
   .el-header {
-    padding: 0 10px;
+    padding: 0;
   }
   .el-main {
-    padding: 10px;
-    height: calc(100% - @header);
+    height: 100%;
+    padding: 10px 15px;
     overflow: auto;
   }
 }

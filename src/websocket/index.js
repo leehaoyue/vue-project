@@ -1,16 +1,3 @@
-/*
-  使用方法：
-  1、引入
-  import { sendWebsocket, closeWebsocket } from '@/websocket/index.js';
-
-  2、建立连接
-  sendWebsocket('wesocket地址', '请求参数', '成功回调函数', '异常回调函数');
-  【成功回调函数，如：wsMessage(res) { consolr.log('返回数据', res) })】
-
-  3、断开连接
-  closeWebsocket();
- */
-
 import { Message } from 'element-ui';
 
 let websock = null,
@@ -37,18 +24,6 @@ function websocketSend (agentData) {
       errorCallback();
     }
   }, 500);
-}
-
-function websocketclose (e) {
-  if (e && e.code !== 1000) {
-    Message.closeAll();
-    Message({
-      type: 'warning',
-      showClose: true,
-      message: 'ws连接异常，请稍候重试！'
-    });
-    errorCallback();
-  }
 }
 
 function websocketOpen () {
@@ -92,10 +67,6 @@ function initWebSocket () {
     });
     errorCallback(e);
   };
-
-  websock.onclose = function (e) {
-    websocketclose(e);
-  };
 }
 
 export function sendWebsocket (url, agentData, successCallback, errCallback) {
@@ -109,6 +80,5 @@ export function sendWebsocket (url, agentData, successCallback, errCallback) {
 export function closeWebsocket () {
   if (websock) {
     websock.close();
-    websock.onclose();
   }
 }

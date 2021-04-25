@@ -1,7 +1,7 @@
 import subItem from './sub/index.vue';
 
 export default {
-  name: 'aside',
+  name: 'asideTpl',
   data() {
     return {
       list: [],
@@ -9,9 +9,6 @@ export default {
     };
   },
   computed: {
-    collapse() { // 是否展开侧边栏导航
-      return this.$store.state.common.asideCollapse;
-    },
     limit() {
       if (Object.keys(this.$store.state.admin.limit).length!==0) {
         return '/aside_list_admin';
@@ -25,7 +22,6 @@ export default {
         if (this.list.length>0 && JSON.stringify(this.list).indexOf(`"index":"${n.name}"`)<0) {
           this.$router.replace('/');
         }
-        this.setActive();
       },
       deep: true,
       immediate: true
@@ -72,16 +68,8 @@ export default {
       }
       return this.getDefault(res.children[0]);
     },
-    setActive() { // 设置选中项
-      if (!this.$globalmethod.isEmpty(this.$refs.menu)) {
-        this.$refs.menu.activeIndex = this.$route.name;
-      }
-    },
     selectMenuSub(info) { // 切换模块
-      if (info !== this.$route.name) {
-        this.$router.push({ name: info });
-        this.setActive();
-      }
+      this.$router.push({ name: info });
     }
   },
   components: {

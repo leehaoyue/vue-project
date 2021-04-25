@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import Qs from 'qs';
 import $server from './interfaceList.js';
-import { Message, MessageBox, Loading } from 'element-ui';
+import { ElMessage, ElMessageBox, ElLoading } from 'element-plus';
 
 const $instance = axios.create({
   transformRequest: [data => { // 请求数据处理（防止后端接收不到参数）
@@ -27,13 +27,13 @@ const $instance = axios.create({
 });
 
 // 自定义拦截器
-$instance.interceptors.request.use(conf => {
+$instance.interceptors.request.use(res => {
   // 请求成功
-  return conf;
+  return res;
 }, err => {
   // 请求失败
-  Message.closeAll();
-  Message({
+  ElMessage.closeAll();
+  ElMessage({
     type: 'warning',
     showClose: true,
     message: '请求失败，请重试！'
@@ -46,8 +46,8 @@ $instance.interceptors.response.use(res => {
   return res;
 }, err => {
   // 响应失败
-  Message.closeAll();
-  Message({
+  ElMessage.closeAll();
+  ElMessage({
     type: 'error',
     showClose: true,
     message: '响应失败，请重试！'
@@ -57,7 +57,7 @@ $instance.interceptors.response.use(res => {
 
 export default {
   getData({url, method, params, baseURL, responseType, headers}) {
-    let loading = Loading.service({customClass: 'pageLoading', background: 'transparent'});
+    let loading = ElLoading.service({customClass: 'pageLoading', background: 'transparent'});
 
     return new Promise((resolve, reject) => {
       if (params && params.isMock) {
@@ -86,12 +86,12 @@ export default {
         url: url
       }).then(res => {
         loading.close();
-        if (res.data && (res.data.load>0 || res.data.status===200 || res.data.status===201)) {
+        if (res.data && res.data.status===200) {
           resolve(res);
         } else {
-          MessageBox({
+          ElMessageBox({
             title: '提示',
-            message: res.data.message || '请求响应失败，请重试！',
+            message: res.data.message,
             showCancelButton: true,
             showConfirmButton: true,
             type: 'warning'
@@ -100,8 +100,8 @@ export default {
               this.getData({url, method, params, baseURL, responseType, headers});
             }
           }).catch(() => {
-            Message.closeAll();
-            Message({
+            ElMessage.closeAll();
+            ElMessage({
               type: 'info',
               showClose: true,
               message: '已取消！'
@@ -110,7 +110,7 @@ export default {
         }
       }).catch(err => {
         loading.close();
-        MessageBox({
+        ElMessageBox({
           title: '提示',
           message: err || '请求响应失败，请重试！',
           showCancelButton: true,
@@ -121,8 +121,8 @@ export default {
             this.getData({url, method, params, baseURL, responseType, headers});
           }
         }).catch(() => {
-          Message.closeAll();
-          Message({
+          ElMessage.closeAll();
+          ElMessage({
             type: 'info',
             showClose: true,
             message: '已取消！'
@@ -134,7 +134,7 @@ export default {
   },
   // 上传文件
   uploadFile({url, method, params, baseURL}) {
-    let loading = Loading.service({customClass: 'pageLoading', background: 'transparent'});
+    let loading = ElLoading.service({customClass: 'pageLoading', background: 'transparent'});
 
     return new Promise((resolve, reject) => {
       let methods = method || 'post',
@@ -149,7 +149,7 @@ export default {
         }
       }
       for (let i in paramsObj) {
-        if (Array.isArray(paramsObj[i]) && paramsObj[i][0] instanceof File) {
+        if (Array.isArray(paramsObj[i])) {
           for (let j in paramsObj[i]) {
             formData.append(i, paramsObj[i][j], new Date().getTime());
           }
@@ -162,6 +162,7 @@ export default {
       } : {
         params: formData
       };
+
       $instance({...obj,
         url: url,
         baseURL: baseURL || process.env.VUE_APP_API,
@@ -171,10 +172,10 @@ export default {
         }
       }).then(res => {
         loading.close();
-        if (res.data && (res.data.load>0 || res.data.status===200 || res.data.status===201)) {
+        if (res.data && res.data.status===200) {
           resolve(res);
         } else {
-          MessageBox({
+          ElMessageBox({
             title: '提示',
             message: res.data.message || '请求响应失败，请重试！',
             showCancelButton: true,
@@ -185,8 +186,8 @@ export default {
               this.uploadFile({url, method, params, baseURL});
             }
           }).catch(() => {
-            Message.closeAll();
-            Message({
+            ElMessage.closeAll();
+            ElMessage({
               type: 'info',
               showClose: true,
               message: '已取消！'
@@ -195,7 +196,7 @@ export default {
         }
       }).catch(err => {
         loading.close();
-        MessageBox({
+        ElMessageBox({
           title: '提示',
           message: err || '请求响应失败，请重试！',
           showCancelButton: true,
@@ -206,8 +207,8 @@ export default {
             this.uploadFile({url, method, params, baseURL});
           }
         }).catch(() => {
-          Message.closeAll();
-          Message({
+          ElMessage.closeAll();
+          ElMessage({
             type: 'info',
             showClose: true,
             message: '已取消！'

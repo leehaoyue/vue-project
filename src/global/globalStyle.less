@@ -1,5 +1,5 @@
 /* PC端页面尺寸 */
-@min_width: 1024px;
+@min_width: 1366px;
 @min_height: 768px;
 
 /* 页头、页脚高度（同globaldata） */
@@ -28,6 +28,11 @@
 @grayScale-color_6: #E4E7ED;
 @grayScale-color_7: #EBEEF5;
 @grayScale-color_8: #F2F6FC;
+
+@deep_blue: #0171FF; /* 深蓝色 */
+@light_blue: #ecf5ff; /* 淡蓝色 */
+@blue_green: #61D5E6; /* 蓝绿色 */
+@blue_green_opc: rgba(97, 213, 230, 0.2); /* 蓝绿色半透明 */
 
 /* 超出显示省略号 */
 .beyond-scope {
@@ -60,6 +65,179 @@
   scrollbar-face-color: rgba(185, 191, 203, 0.3);
 }
 
+/* form-create样式 */
+.formcreate-style {
+  padding: 5px 0;
+  .el-form-item {
+    margin-bottom: 10px;
+  }
+  .el-form-item__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+  .el-form-item__content, .el-input__inner, .el-input__icon {
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+  }
+  .el-input__inner {
+    border-radius: 2px;
+    &[disabled='disabled'] {
+      color: @grayScale-color_2;
+    }
+  }
+  .is-disabled {
+    .el-radio__label {
+      color: @grayScale-color_2;
+    }
+    &.is-checked .el-radio__inner::after {
+      background-color: @grayScale-color_3;
+    }
+  }
+  .el-form-item__content {
+    .el-select, .el-cascader {
+      width: 100%;
+      line-height: 30px;
+    }
+    .el-input-number {
+      width: 100%;
+      line-height: 30px;
+      span[role=button] {
+        width: 20%;
+        text-indent: 0;
+        background: none;
+        border-radius: 0;
+        text-align: center;
+      }
+      .el-icon-minus, .el-icon-plus {
+        text-indent: 0;
+      }
+      .el-input__inner {
+        text-indent: 0;
+      }
+    }
+    .el-input__suffix {
+      right: 5px;
+    }
+    .el-input__inner {
+      width: 100%;
+    }
+  }
+  .el-form-item__error {
+    z-index: 1;
+  }
+}
+
+/* 标签页样式 */
+.tab-style {
+  user-select: none;
+  .el-tabs__nav {
+    border: none;
+  }
+  .el-tabs__item {
+    border: none;
+    position: relative;
+    padding: 0 30px !important;
+  }
+  .el-tabs__item:nth-child(1) {
+    padding: 0 30px 0 20px !important;
+  }
+  .el-tabs__item.is-active {
+    color: @grayScale-color_8;
+  }
+  .el-tabs__item:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+    box-sizing: border-box;
+    transform-origin: bottom;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 10px;
+    border-right: 3px #FFF solid;
+    background: @grayScale-color_5;
+    transform: perspective(0.5em) scale(1.1, 1) rotateX(1deg);
+  }
+  .el-tabs__item:nth-child(1):after {
+    z-index: -1;
+    transform-origin: bottom left;
+  }
+  .el-tabs__item.is-active:after {
+    background: @primary-color;
+  }
+}
+
+/* 按钮选项卡样式 */
+.tabbtn-stype {
+  padding: 0;
+  cursor: auto;
+  width: 150px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  margin: 0 auto 5px auto;
+  justify-content: space-between;
+  border: 1px solid @primary-color;
+  .el-button {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 100%;
+    border: none;
+    cursor: auto;
+    line-height: 2;
+    border-radius: 0;
+    overflow: hidden;
+    background: none;
+    margin-bottom: -1px;
+    color: @primary-color;
+    &.el-button--primary {
+      background: @primary-color;
+      color: @grayScale-color_8;
+    }
+  }
+  .el-button:nth-child(2).el-button--default {
+    cursor: pointer;
+  }
+}
+
+/* table样式 */
+.table-style {
+  width: 100%;
+  .cell {
+    div {
+      .beyond-scope;
+      font-size: 1em;
+    }
+  }
+}
+
+/* pagination样式 */
+.pagination-style {
+  margin-top: 1rem;
+}
+
+/* tooltip样式 */
+.tooltip-style {
+  max-width: 300px;
+}
+
+/* dialog样式 */
+.dialog-style {
+  .el-dialog__header {
+    background: @grayScale-color_7;
+  }
+  .el-dialog__body {
+    padding: 20px;
+    overflow: auto;
+    max-height: 45vh;
+  }
+}
 
 /* 页面整体 */
 .body-auto {
@@ -67,6 +245,7 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   font-size: @font-size;
   min-width: @min_width;
   min-height: @min_height;
@@ -74,6 +253,15 @@
   background: @grayScale-color_8;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  .el-tooltip__popper {
+    .tooltip-style;
+  }
+  .el-dialog {
+    .dialog-style;
+  }
+  .el-dialog__wrapper {
+    overflow: hidden;
+  }
 }
 
 .body-hidden {

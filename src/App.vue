@@ -1,6 +1,6 @@
 <template>
-  <div id="app" v-cloak>
-    <router-view />
+  <div id="nav" v-cloak>
+    <router-view/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ html,body {
   .body-hidden;
   color: @grayScale-color_1;
 }
-#app {
+#app, #nav {
   height: 100%;
 }
 

@@ -1,8 +1,8 @@
-<!-- 组件-module_B_2 -->
+<!-- 页面标题 -->
 <template>
-  <el-row class="module_B_2">
+  <el-row class="pagetitle">
     <el-col :span="24">
-      <buildingPage />
+      <h4>{{ msg }}</h4>
     </el-col>
   </el-row>
 </template>

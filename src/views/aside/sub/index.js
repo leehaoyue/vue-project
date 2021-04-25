@@ -1,8 +1,7 @@
 export default {
   name: 'subList',
   props: {
-    subList: null,
-    collapse: false
+    subList: null
   },
   data() {
     return {};

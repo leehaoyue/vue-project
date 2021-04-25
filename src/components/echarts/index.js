@@ -1,3 +1,4 @@
+import * as echarts from 'echarts';
 import 'echarts-gl';
 
 export default {
@@ -16,6 +17,9 @@ export default {
   watch: {
     options: {
       handler() {
+        if (!this.$globalmethod.isEmpty(this.echartsModel)) {
+          this.echartsModel.dispose();
+        }
         this.drawInit();
       },
       deep: true
@@ -36,7 +40,7 @@ export default {
   },
   methods: {
     drawInit() {
-      this.echartsModel = this.$echarts.init(this.$refs[this.chartName]);
+      this.echartsModel = echarts.init(this.$refs[this.chartName]);
       this.echartsModel.clear();
       this.echartsModel.showLoading('default', {
         text: '加载中',
@@ -60,7 +64,7 @@ export default {
       }
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.echartsModel.dispose();
     window.removeEventListener('resize', this.drawResize, 20);
   }

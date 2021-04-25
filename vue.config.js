@@ -19,7 +19,7 @@ module.exports = {
     },
     proxy: {
       '/crossDomain': {
-        target: '<url>',
+        target: 'http://127.0.0.1:8080',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
@@ -28,26 +28,29 @@ module.exports = {
       }
     }
   },
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html',
+      title: '效能-综合展示',
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
+    }
+  },
+  pwa: {
+    iconPaths: {
+      favicon32: 'logo.png',
+      favicon16: 'logo.png',
+      appleTouchIcon: 'logo.png',
+      maskIcon: 'logo.png',
+      msTileImage: 'logo.png'
+    }
+  },
   chainWebpack: config => {
     config.resolve.alias
     .set('@', resolve('src'));
     config.plugins.delete('preload');
     config.plugins.delete('prefetch');
-    config.module
-    .rule('svg')
-    .exclude.add(resolve('src/svglines'))
-    .end();
-
-    config.module
-    .rule('svg-sprite-loader')
-    .test(/\.svg$/)
-    .include.add(resolve('src/svglines'))
-    .end()
-    .use('svg-sprite-loader')
-    .loader('svg-sprite-loader')
-    .options({
-      symbolId: 'svglines-[name]'
-    });
   },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {

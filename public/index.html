@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
   <head>
     <meta charset="utf-8">
     <meta name="referrer" content="no-referrer">
@@ -15,11 +15,11 @@
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="theme-color" content="#1890ff">
     <link rel="icon" href="<%= BASE_URL %>logo.png">
-    <title>vue-cli3 搭建的空项目</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but wisdomstation doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->

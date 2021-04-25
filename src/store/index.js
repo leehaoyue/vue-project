@@ -1,13 +1,9 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 import common from './common';
 import admin from './admin';
 import usr from './usr';
 
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
   modules: {
     common,
     admin,

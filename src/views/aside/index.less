@@ -1,43 +1,36 @@
 @import '../../global/globalStyle.less';
 
-.hoverBefore {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  content: '';
-  height: 100%;
-  display: block;
-  background: @primary-color;
-}
-
 .menustyle {
   border: none;
   letter-spacing: 0.1em;
+  background: transparent;
   .el-menu-item.is-active {
-    position: relative;
-    &:before {
-      .hoverBefore;
-    }
+    background: linear-gradient(#185BEA, #034FDD);
+  }
+  .el-menu-item, .el-submenu__title {
+    height: auto;
+    line-height: 1;
+    min-width: auto;
+    font-size: 0.9em;
+    text-align: center;
+    color: @grayScale-color_8;
+    padding: 1rem 0 !important;
+    border: 1px solid transparent;
+  }
+  .el-menu-item:hover, .el-submenu__title:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .el-submenu__icon-arrow {
+    right: 5px;
+    color: @grayScale-color_8;
   }
 }
 
 .aside {
   min-height: 100%;
-  background: #FFF;
   user-select: none;
+  background: linear-gradient(#0484FC, #005DE9);
   .el-menu {
     .menustyle;
-  }
-}
-
-.popperappend {
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  .el-menu {
-    .menustyle;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
   }
 }

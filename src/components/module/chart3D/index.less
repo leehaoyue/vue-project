@@ -1,0 +1,21 @@
+@import '../../../global/globalStyle.less';
+
+.chart3D {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .pagetitle {
+    font-size: 1.5em;
+  }
+  .chartmodel {
+    position: relative;
+    .fas {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      z-index: 10;
+      cursor: pointer;
+      color: @primary-color;
+    }
+  }
+}

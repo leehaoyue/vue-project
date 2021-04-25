@@ -3,24 +3,54 @@ import pageAside from '@/views/aside/index.vue'; // 侧边栏
 import layout from '@/views/layout/index.vue'; // 布局-layout
 
 export default {
-  name: 'container',
+  name: 'containerTpl',
+  data() {
+    return {
+      failed: {
+        getLine: true // 线路返回情况
+      },
+      showCount: 0
+    };
+  },
   computed: {
     aside() {
-      return this.$store.state.common.asideCollapse ? 'auto' : this.$globaldata.container.aside.width;
+      return this.$globaldata.container.aside.width;
     },
-    tooltipCNT() {
-      return this.$store.state.common.asideCollapse ? '展开导航' : '收起导航';
-    },
-    tooltipBTN() {
-      return this.$store.state.common.asideCollapse ? 'el-icon-d-arrow-right' : 'el-icon-d-arrow-left';
+    showDetail() {
+      return Object.keys(this.failed).length === this.showCount;
+    }
+  },
+  watch: {
+    '$route.name': {
+      handler(n, o) {
+        if (n==='systemfc' || o==='systemfc' || !o) {
+          let obj = {};
+
+          for (let i in this.failed) {
+            obj[i] = false;
+          }
+          this.failed = obj;
+          this.init();
+        } else {
+          for (let i in this.failed) {
+            if (!this.failed[i]) {
+              this[i]();
+            }
+          }
+        }
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
-    collapseBtn() {
-      this.$store.commit('common/asideCollapse', !this.$store.state.common.asideCollapse);
+    init() { // 初始化
+      this.showCount = 0;
+      this.getLine();
     },
-    refresh() {
-      this.$router.replace('/refresh');
+    getLine() { // 获取线路
+      this.failed.getLine = true;
+      this.showCount += 1;
     }
   },
   components: {

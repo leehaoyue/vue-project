@@ -1,6 +1,9 @@
 export default {
-  name: 'header',
+  name: 'headerTpl',
   computed: {
+    src() {
+      return this.$globaldata.link+'banner.jpg';
+    },
     name() {
       return this.$store.getters['admin/adminlimit'] || this.$store.getters['usr/usrlimit'];
     },
@@ -14,16 +17,29 @@ export default {
   methods: {
     // 退出
     excit() {
-      this.$confirm('确认退出登录？', '提示', {
+      this.$confirm('确认退出？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
         this.$store.commit(this.limit, {});
         this.$router.push({ name: 'login' });
+        this.$message({
+          type: 'success',
+          message: '已退出！',
+          showClose: true
+        });
       }).catch(() => {
-        return;
+        this.$message({
+          type: 'info',
+          message: '已取消！',
+          showClose: true
+        });
       });
+    },
+    // 刷新
+    refresh() {
+      this.$router.replace('/refresh');
     }
   }
 };

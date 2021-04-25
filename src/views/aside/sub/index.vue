@@ -1,13 +1,14 @@
 <!-- 侧边栏-子项 -->
 <template>
-  <div :class="{subcollapse: collapse}">
+  <div>
     <el-submenu class="subList"
       v-if="subList.children"
       :index="subList.index"
       popper-class="popperappend">
       <template slot="title">
         <i :class="subList.icon" v-if="subList.icon"></i>
-        <span slot="title" v-show="!collapse">{{subList.label}}</span>
+        <span :class="{ title: !subList.icon }"
+          slot="title">{{subList.label}}</span>
       </template>
       <subList :subList="item"
         :key="item.index"
@@ -17,7 +18,8 @@
       :index="subList.index"
       v-else>
       <i :class="subList.icon" v-if="subList.icon"></i>
-      <span slot="title">{{subList.label}}</span>
+      <span :class="{ title: !subList.icon }"
+        slot="title">{{subList.label}}</span>
     </el-menu-item>
   </div>
 </template>
