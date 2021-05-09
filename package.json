@@ -18,7 +18,7 @@
     "es6-promise": "^4.2.8",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mapv": "^2.0.62",
     "mockjs": "^1.1.0",
     "mux.js": "^5.5.3",
